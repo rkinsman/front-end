@@ -1,5 +1,6 @@
 FrontEnd::Application.routes.draw do
-  match '/',    to: 'application#index'
+  root to: 'application#index'
+  match 'rpc', to: 'decider#rpc'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
