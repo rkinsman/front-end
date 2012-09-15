@@ -1,6 +1,7 @@
 class DeciderController < ApplicationController
   def rpc
-    tmp = RestClient.get 'http://google.com/robots.txt'
+    node = "http://localhost:1337"
+    tmp = RestClient.get node
     render :text => tmp.to_str
   end
 end
