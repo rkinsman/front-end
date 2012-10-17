@@ -1,0 +1,19 @@
+<%= form_for(@question) do |f| %>
+  <%= f.label :Question_Text %>
+  <%= f.text_field :qText %>
+
+  <%= f.label :Yes %>
+  <%= f.radio_button :correctAnswer, "True" %>
+  <%= f.label :No %>
+  <%= f.radio_button :correctAnswer, "False" %>
+
+  <%= f.label :Answer_Text %>
+  <%= f.text_field :aText %>
+
+  <%= f.hidden_field :lesson_Id, :value => @lesson.id %>
+
+  <div class="actions">
+    <%= f.submit "Create Question" %>
+  </div>
+<% end %>
+

@@ -1,8 +1,10 @@
 FrontEnd::Application.routes.draw do
+  resources :questions
   resources :lessons
-
+  resources :users
+  match 'lessons/:id/take' => 'lessons#take'
   root to: 'application#index'
-  match 'rpc', to: 'decider#rpc'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
