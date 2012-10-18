@@ -1,0 +1,25 @@
+<h1><%= @lesson.title %></h1>
+<% if @lesson.questions.size != 0%>
+  <ol>
+  <% @lesson.questions.each do |l| %>
+    <li>
+    <div class="questionPair">
+      <div class="question">
+        <p>Question:</p>
+        <%=l.qText%>
+      </div>
+      <%= label_tag 'Yes' %>
+      <%= radio_button_tag 'correctAnswer', 'true' %>
+      <%= label_tag 'No' %>
+      <%= radio_button_tag 'correctAnswer', 'false' %>
+      <div class="answer">
+        <p>Answer: </p>
+        <%=l.aText%>
+      </div>
+    </div>
+    </li>
+  <% end %>
+</ol>
+<% else %>
+  <h3>This lesson does not have any questions yet. Check back later.</h3>
+<% end %>
