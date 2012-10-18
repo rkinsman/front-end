@@ -16,6 +16,6 @@ class QuestionsController < ApplicationController
     @question.aText = params[:question][:aText]
     @question.save
     @lesson.questions << @question
-    redirect_to lessons_path
+    redirect_to edit_lesson_path(@lesson)
   end
 end
