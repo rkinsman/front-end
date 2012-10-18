@@ -2,6 +2,7 @@
 <% if @lesson.questions.size != 0%>
   <ol>
   <% @lesson.questions.each do |l| %>
+    <%= form_tag take_lesson_path, :method => "post" do %>
     <li>
     <div class="questionPair">
       <div class="question">
@@ -18,6 +19,8 @@
       </div>
     </div>
     </li>
+  <% end %>
+  <%= submit_tag "Done" %>
   <% end %>
 </ol>
 <% else %>

@@ -13,6 +13,11 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
   end
 
+  def process_answer
+    @lesson = Lesson.find(params[:id])
+    #error checking...bitches
+  end
+
   def show
     @lesson = Lesson.find(params[:id])
   end

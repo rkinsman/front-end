@@ -15,5 +15,5 @@
 /tmp
 
 /.rspec
-/Gemfile.lock
+Gemfile.lock
 *.swp
