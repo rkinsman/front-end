@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 gem 'rest-client', '1.6'
 gem 'mongoid', '~> 3.0.0'
 gem 'twitter-bootstrap-rails'
+gem "rails-backbone", "~> 0.8.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -28,7 +29,7 @@ group :test do
   gem 'capybara', '1.1.2'
 end
 
-gem 'jquery-rails', '2.0.2'
+gem 'jquery-rails', '~> 2.1.3'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

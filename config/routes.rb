@@ -2,7 +2,8 @@ FrontEnd::Application.routes.draw do
   resources :questions
   resources :lessons
   resources :users
-  match 'lessons/:id/take' => 'lessons#take'
+  match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get
+  match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post
   root to: 'application#index'
 
   # The priority is based upon order of creation:
