@@ -15,7 +15,8 @@ class QuestionsController < ApplicationController
     @question.qText = params[:question][:qText]
     @question.aText = params[:question][:aText]
     @question.save
-    @lesson.questions << @question
+    @lesson.questions << @question.as_document
+    @lesson.save
     redirect_to edit_lesson_path(@lesson)
   end
 end
