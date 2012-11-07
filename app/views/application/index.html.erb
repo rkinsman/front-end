@@ -1,2 +1,8 @@
 <% provide(:title, "Home") %>
-Hey Sup
+<div class="span8">
+  <% if cookies[:user].blank? %>
+    <%= render 'users/new.html.erb' %>
+  <% else %>
+    <%= render 'users/dashboard.html.erb' %>
+  <% end %>
+</div>

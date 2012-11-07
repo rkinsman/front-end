@@ -6,6 +6,8 @@ FrontEnd::Application.routes.draw do
   match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post
   root to: 'application#index'
 
+  match '/signin', to: 'users#login'
+  match '/signout', to: 'users#logout'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
