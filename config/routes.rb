@@ -2,12 +2,14 @@ FrontEnd::Application.routes.draw do
   resources :questions
   resources :lessons
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
   match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get
   match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post
   root to: 'application#index'
 
-  match '/signin', to: 'users#login'
-  match '/signout', to: 'users#logout'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

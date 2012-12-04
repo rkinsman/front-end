@@ -1,5 +1,9 @@
-<%= form_tag(signin_path, :class => "form-inline") do %>
-  <%= label_tag(:email,"Email:") %>
-  <%= text_field_tag(:email) %>
-  <%= submit_tag("Log In")%>
+<%= form_for(:session, url: sessions_path) do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Sign in", class: "btn btn-primary" %>
 <% end %>
