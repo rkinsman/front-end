@@ -1,5 +1,6 @@
-<% if @user.currLesson %>
-  Here's your lesson!
+<% if @user.currLesson%>
+  <% #@lesson = Lesson.find( %>
+  <%= link_to "Go to Current Lesson", render(:partial => 'lessons/take', :locals => { :lesson => @lesson }) %>
 <% else %>
   You gotta start somewhere!
 <% end %>

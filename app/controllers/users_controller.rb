@@ -11,14 +11,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.save
-    cookies.signed[:user] = { :value => @user.object_id, :expires => 2.hour.from_now }
+    session[:user] = @user.id
     redirect_to '/'
   end
 
   def login
     @user = User.find_by(email: params[:email])
     if @user 
-      cookies.signed[:user] = { :value => @user.object_id, :expires => 2.hour.from_now }
+      session[:user] = @user.id
     else
       flash[:error] = "User does not exist"
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    cookies.delete :user
+    session.delete :user
     redirect_to '/'
   end
 end

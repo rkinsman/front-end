@@ -1,4 +1,9 @@
 <% provide(:title, "Home") %>
 <div class="span8">
+  <% if session[:user] %>
+    <%= render 'users/dashboard' %>
+  <% else %>
+    <%= render 'users/new' %>
+  <% end %>
 
 </div>
