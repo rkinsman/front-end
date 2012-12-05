@@ -10,12 +10,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new
-    @lesson = Lesson.find(params[:question][:lesson_Id])
-    @question.qText = params[:question][:qText]
-    @question.aText = params[:question][:aText]
-    @question.save
-    @lesson.questions << @question.as_document
+    @lesson = Lesson.find(params[:question][:lesson_id])
+    @lesson.questions.push(Question.new(params[:question][:qText], params[:question][:aText], params[:question][:correctAnswer]))
+    # debugger
     @lesson.save
     redirect_to edit_lesson_path(@lesson)
   end

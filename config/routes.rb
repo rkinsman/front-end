@@ -2,7 +2,6 @@ FrontEnd::Application.routes.draw do
   resources :questions
   resources :lessons
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
 
   match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get
   match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post

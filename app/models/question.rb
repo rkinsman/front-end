@@ -4,14 +4,14 @@ class Question
   before_create :default_values
 
   field :qText, type: String
-  field :correctAnswer, type: Boolean
+  field :correctAnswer, type: String 
   field :aText, type: String
   field :learnerAnswer, type: String
-  belongs_to :lesson, :class_name => "Lesson", :inverse_of => :questions
-
+  embedded_in :lesson
+#  belongs_to :lesson, :class_name => "Lesson", :inverse_of => :questions
 
   private
     def default_values
-      self.learnerAnswer ||= "U"
+      self[:learnerAnswer] ||= "U"
     end
 end

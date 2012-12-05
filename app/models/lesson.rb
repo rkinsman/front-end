@@ -1,9 +1,35 @@
+require 'net/http'
+require 'json'
+
 class Lesson 
   include Mongoid::Document
-  attr_protected :title, :id
+  attr_protected :title, :lesson_id
   field :title,   type: String
+  field :completed,   type: Boolean
   embeds_many :questions
-  has_many :questions, :class_name => "Question", :inverse_of => :lesson
-
   accepts_nested_attributes_for :questions
+#  embeds_many :questions, :class_name => "Question", :inverse_of => :lesson
+
+  def send_on_complete()
+    @host = 'localhost'
+    @port = '1337'
+
+    @path = ""
+    
+    qs = Array.new()
+    self.questions.each.to_json do |q| qs.push(q) end
+
+    @body = qs
+
+    request = Net::HTTP::Post.new(@path, initheader = {'Content-Type' =>'application/json'})
+    request.body = @body
+    response = Net::HTTP.new(@host, @port).start {|http| http.request(request) }
+
+  end
+
+  def complete()
+    self.completed = true
+    send_on_complete()
+  end
+
 end
