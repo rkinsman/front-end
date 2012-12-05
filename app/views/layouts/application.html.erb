@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <a class="brand" href="#">Learn to Program</a>
           <div class="pull-right">
-            <%= render cookies[:user] ? 'users/logout.html.erb' : 'users/login.html.erb' %>
+            <%= render session[:user] ? 'users/logout.html.erb' : 'users/login.html.erb' %>
           </div>
         </div>
       </div>
