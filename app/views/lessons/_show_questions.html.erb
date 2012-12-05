@@ -1,12 +1,12 @@
 <% if @lesson.questions.size != 0%>
   <ol>
   <%= form_tag take_lesson_path, :method => "post" do %>
-    <% @lesson.questions.each do |l| %>
+    <% @lesson.questions.each do |q| %>
       <li>
       <div class="questionPair">
         <div class="question">
           <p>Question:</p>
-          <%=l.qText%>
+          <%=q.qText%>
         </div>
         <%= label_tag 'Yes' %>
         <%= radio_button_tag 'correctAnswer', 'true' %>
@@ -14,7 +14,7 @@
         <%= radio_button_tag 'correctAnswer', 'false' %>
         <div class="answer">
           <p>Answer: </p>
-          <%=l.aText%>
+          <%=q.aText%>
         </div>
       </div>
       </li>

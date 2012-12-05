@@ -1,6 +1,6 @@
 class Question 
   include Mongoid::Document  
-  attr_protected :qText, :correctAnswer, :aText, :id
+  attr_accessible :qText, :correctAnswer, :aText, :id
   before_create :default_values
 
   field :qText, type: String
