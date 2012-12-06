@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   protect_from_forgery
+  respond_to :html, :json
 
   def new
     @lesson = Lesson.new
@@ -7,24 +8,12 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all
-  end
-
-  def take
-    @lesson = Lesson.find(params[:id])
-  end
-
-  def process_answer
-    @lesson = Lesson.find(params[:id])
-    #error checking...bitches
+    respond_with @lessons
   end
 
   def show
     @lesson = Lesson.find(params[:id])
-  end
-
-  def edit
-    @lesson = Lesson.find(params[:id])
-    @question = Question.new
+    respond_with @lesson
   end
 
   def update
@@ -35,12 +24,12 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new
     @lesson.title = params[:lesson][:title]
     @lesson.save
-    redirect_to lessons_path
+    respond_with @lesson
   end
 
   def destroy
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
-    redirect_to lessons_path
+    respond_with @lesson
   end
 end

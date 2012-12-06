@@ -3,11 +3,12 @@ require 'json'
 
 class Lesson 
   include Mongoid::Document
-  attr_protected :title, :lesson_id
+  attr_accessible :title, :lesson_id
   field :title,   type: String
   field :completed,   type: Boolean
-  embeds_many :questions
-  accepts_nested_attributes_for :questions
+  #embeds_many :questions
+  #belongs_to :user
+  #accepts_nested_attributes_for :questions
 #  embeds_many :questions, :class_name => "Question", :inverse_of => :lesson
 
   def send_on_complete()

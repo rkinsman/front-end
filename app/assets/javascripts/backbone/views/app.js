@@ -12,6 +12,7 @@ $(function($) {
 
     initialize: function() {
       console.log("In app!");
+      //Lessons.fetch()
     },
 
     render: function() {

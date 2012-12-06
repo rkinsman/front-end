@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'rest-client', '1.6'
 gem 'mongoid', '~> 3.0.0'
-#gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails'
 gem "rails-backbone", "~> 0.8.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,9 +20,6 @@ group :assets do
   gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
-#  gem "less"
-#  gem 'therubyracer'
-#  gem 'libv8', '~> 3.11.8'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

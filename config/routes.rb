@@ -1,10 +1,12 @@
 FrontEnd::Application.routes.draw do
   resources :questions
   resources :lessons
-  resources :users
+  resources :users do
+    resource :lessons
+  end
 
-  match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get
-  match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post
+  #match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get
+  #match 'lessons/:id/take' => 'lessons#process_answer', :as => :take_lesson, :via => :post
   root to: 'application#index'
 
   match '/signin', to: 'users#login'
