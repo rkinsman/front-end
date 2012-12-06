@@ -12,7 +12,8 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @lesson = Lesson.find(params[:id])
+    @user = User.find(params[:user_id])
+    @lesson = @user.completedLessons
     respond_with @lesson
   end
 
