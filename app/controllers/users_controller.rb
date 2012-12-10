@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new (params[:user] || JSON.parse(params.first.first))
     @user.save
     session[:user] = @user.id
     respond_with @user
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     #HOLY CRAP THIS IS UGLY WHY WONT IT WORK PRETTY
-    @user.update_attributes(JSON.parse(params.first.first))
+    @user.update_attributes(params[:user] || JSON.parse(params.first.first))
     respond_with @user do |user|
       user.json { render json: @user.to_json }
     end

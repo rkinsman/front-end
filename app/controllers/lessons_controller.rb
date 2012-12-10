@@ -12,18 +12,20 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @lesson = @user.completedLessons
+    @lesson = Lesson.find(params[:id])
     respond_with @lesson
   end
 
   def update
     @lesson = Lesson.find(params[:id])
+    @lesson.update_attributes(params[:lesson] || JSON.parse(params.first.first))
+    respond_with @lesson do |lesson|
+      lesson.json { render json: @lesson.to_json}
+    end
   end
 
   def create
-    @lesson = Lesson.new
-    @lesson.title = params[:lesson][:title]
+    @lesson = Lesson.new(params[:lesson] || JSON.parse(params.first.first))
     @lesson.save
     respond_with @lesson
   end

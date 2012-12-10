@@ -1,8 +1,12 @@
 FrontEnd::Application.routes.draw do
-  resources :questions
-  resources :lessons
+  resources :lessons do
+    resources :questions 
+  end
   resources :users do
-    resource :lessons
+    match 'lessons' => 'user_lessons#index', :via => :get
+    resource :user_lessons, :path => '/lessons'
+    match 'lessons/:id' => 'user_lessons#show', :via => :get
+    match 'lessons/:id' => 'user_lessons#update', :via => :put
   end
 
   #match 'lessons/:id/take' => 'lessons#take', :as => :take_lesson, :via => :get

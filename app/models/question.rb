@@ -8,7 +8,6 @@ class Question
   field :aText, type: String
   field :learnerAnswer, type: String
   embedded_in :lesson
-#  belongs_to :lesson, :class_name => "Lesson", :inverse_of => :questions
 
   private
     def default_values

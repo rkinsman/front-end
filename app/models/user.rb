@@ -6,6 +6,6 @@ class User
   field :name, type: String
   field :email, type: String
   field :_id, type: String, default: ->{ username }
-  has_one :currLesson, :class_name => "Lesson"
-  has_many :completedLessons, :class_name => "Lesson"
+  has_one :curr_lesson, :class_name => "UserLesson"
+  has_many :lessons, :class_name => "UserLesson"
 end
