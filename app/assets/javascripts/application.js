@@ -19,4 +19,4 @@
 //= require backbone_datalink
 //= require backbone/front_end
 //
-//= require_tree .
+//= require_tree

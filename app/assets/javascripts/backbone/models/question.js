@@ -8,7 +8,8 @@ var app = app || {};
       qText: "",
       correctAnswer: "",
       aText: "",
-      learnerAnswer: ""
+      learnerAnswer: "",
+      lessonURL: ""
     },
 
     initialize: function() {
