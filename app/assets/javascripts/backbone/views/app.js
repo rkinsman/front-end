@@ -14,7 +14,6 @@ $(function($) {
 
     initialize: function() {
       app.currentUser ? this.userDash() : this.newUser();
-      app.Users.on('add', 
       //Lessons.fetch()
     },
 

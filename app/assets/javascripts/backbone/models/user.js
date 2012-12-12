@@ -16,11 +16,12 @@ var app = app || {};
 
     makeme: function() {
       console.log(this.toJSON());
-      $.ajax({
+/*      $.ajax({
         url: '/users.json',
         type: 'post',
         data: this.toJSON()
       }).done(function(data) { console.log(data); });
+      */
     },
 
     url: function() {
