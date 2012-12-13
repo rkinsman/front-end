@@ -10,8 +10,18 @@ var app = app || {};
     },
 
     initialize: function() {
-      //console.log("I just got made and my name is: " + this.get('username'));
-      if(app.session) { app.session.signin({'user_id': this.get('username')}); }
+      console.log("I just got made and my name is: " + this.get('username'));
+      //app.Users.on('change', this.signin, this);
+      this.signin();
+    },
+
+    signin: function() {
+      //console.log("sup from signin");
+      if(app.session) { 
+        app.session.signin({'user_id': this.get('username')});
+      } else {
+        console.log("session not set in model/user");
+      }
     },
 
     url: function() {

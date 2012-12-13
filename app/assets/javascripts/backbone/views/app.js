@@ -16,14 +16,12 @@ $(function($) {
 
     initialize : function() {
       app.session = new app.Session();
-      this.render();
-      app.Users.on('change', this.render, this);
+      app.session.on('change', this.render, this);
     },
 
     userDash: function() {
       console.log("user dash");
       var view = new app.UserDashboardView({ 'model' : app.session.get('user')});
-      console.log(view.render());
       this.$container.html(view.render().el);
     },
 
@@ -33,8 +31,7 @@ $(function($) {
     },
 
     makeUser: function() {
-      console.log('Im sure this is working...');
-      app.Users.create({"username": $('#username').val()});
+      app.session.signin(new app.User.create({"username": $('#username').val()}));
     },
 
     render: function() {
@@ -51,8 +48,7 @@ $(function($) {
     },
 
     signin: function() {
-      app.session.signin({'user_id': $('#user_id').val()});
-      this.render();
+      app.session.signin(new app.User({'': $('#user_id').val()}));
     },
 
     signout: function() {

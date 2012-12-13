@@ -13,7 +13,8 @@ $(function() {
 
 
     initialize : function(){
-    console.log('call me maybe');
+
+      console.log('call me maybe');
       this.$el.html(this.template(this.model.toJSON()));
       this.render_sidebar();
       this.render_focus_box();
@@ -21,13 +22,14 @@ $(function() {
 
 
     render_sidebar : function(){
-      this.$el.append();
+      console.log("suede bar");
+      this.$el.append("");
     },
 
 
     render_focus_box : function(){
-      this.$el.append();
+      console.log("box squats");
+      this.$el.append("");
     }
-
   });
 });

@@ -7,7 +7,6 @@ var app = app || {};
 
   app.Session = Backbone.Model.extend({
     defaults: {
-      user_id: false,
       user: false
     },
 
@@ -16,28 +15,24 @@ var app = app || {};
     },
 
     authenticated : function(){
-      return(this.get('user_id'));
+      return(this.get('user'));
     },
 
     load : function() {
-      this.set('user_id', $.cookie('user_id'));
-      var id = this.get('user_id');
-
+      var id = $.cookie('user_id'));
       if(id) {
-        this.set('user', app.Users.create({"username" : id})); 
+        this.set('user', new app.User({"username" : id})); 
       }
       
     },
 
-    signin: function(auth_hash) {
-      $.cookie('user_id', auth_hash['user_id']);
-      this.set('user_id', auth_hash['user_id']);
-      this.set('user', app.Users.get(auth_hash['user_id']));
+    signin: function(user_model) {
+      $.cookie('user_id', user_model.get('id'));
+      this.set('user', user_model);
     },
 
     signout : function() {
       $.removeCookie('user_id');
-      this.set('user_id', false);
       this.set('user', false);
     }
 
