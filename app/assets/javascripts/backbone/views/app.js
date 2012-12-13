@@ -16,15 +16,15 @@ $(function($) {
 
     initialize : function() {
       app.session = new app.Session();
-      this.$topbar = $('#topbar');
-      this.$container = $('#container');
       this.render();
+      app.Users.on('change', this.render, this);
     },
 
     userDash: function() {
       console.log("user dash");
-      //var view = new app.UserDashboardView({ 'model' : app.session.get('user')});
-      //this.$container.html(view.render().el);
+      var view = new app.UserDashboardView({ 'model' : app.session.get('user')});
+      console.log(view.render());
+      this.$container.html(view.render().el);
     },
 
     renderIndex: function() {
@@ -33,10 +33,13 @@ $(function($) {
     },
 
     makeUser: function() {
+      console.log('Im sure this is working...');
       app.Users.create({"username": $('#username').val()});
     },
 
     render: function() {
+      this.$topbar = $('#topbar');
+      this.$container = $('#container');
       if(app.session.authenticated()) {
         this.$topbar.html(JST['backbone/templates/main/logout']());
         this.userDash() 

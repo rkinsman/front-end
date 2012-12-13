@@ -4,11 +4,8 @@ $(function() {
   'use strict';
 
   app.UserDashboardView = Backbone.View.extend({
-    el :        '#main',
-
+    tagName :   'div',
     template :  JST['backbone/templates/main/userDash'],
-
-    model :     app.User,
 
     events : {
     
@@ -17,7 +14,6 @@ $(function() {
 
     initialize : function(){
     console.log('call me maybe');
-      this.model = app.Users.get(app.session.get('user_id'));
       this.$el.html(this.template(this.model.toJSON()));
       this.render_sidebar();
       this.render_focus_box();

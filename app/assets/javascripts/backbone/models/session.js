@@ -22,7 +22,11 @@ var app = app || {};
     load : function() {
       this.set('user_id', $.cookie('user_id'));
       var id = this.get('user_id');
-      if(id) { app.Users.create({"username" : id}); }
+
+      if(id) {
+        this.set('user', app.Users.create({"username" : id})); 
+      }
+      
     },
 
     signin: function(auth_hash) {
