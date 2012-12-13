@@ -19,15 +19,15 @@ var app = app || {};
     },
 
     load : function() {
-      var id = $.cookie('user_id'));
+      //console.log("loading session");
+      var id = $.cookie('user_id');
       if(id) {
         this.set('user', new app.User({"username" : id})); 
       }
-      
     },
 
     signin: function(user_model) {
-      $.cookie('user_id', user_model.get('id'));
+      $.cookie('user_id', user_model.get('username'));
       this.set('user', user_model);
     },
 

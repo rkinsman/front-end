@@ -17,6 +17,7 @@ $(function($) {
     initialize : function() {
       app.session = new app.Session();
       app.session.on('change', this.render, this);
+      this.render();
     },
 
     userDash: function() {
@@ -31,7 +32,7 @@ $(function($) {
     },
 
     makeUser: function() {
-      app.session.signin(new app.User.create({"username": $('#username').val()}));
+      app.session.signin(new app.User({"username": $('#username').val()}));
     },
 
     render: function() {

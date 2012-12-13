@@ -12,23 +12,24 @@ $(function() {
     },
 
 
-    initialize : function(){
+    initialize : function() {
 
-      console.log('call me maybe');
+      //console.log('call me maybe');
       this.$el.html(this.template(this.model.toJSON()));
+      this.$side = $('#sidebar');
+      console.log(this.$el);
       this.render_sidebar();
       this.render_focus_box();
     },
 
 
-    render_sidebar : function(){
-      console.log("suede bar");
-      this.$el.append("");
+    render_sidebar : function() {
+      var side = new app.UserSidebarView({"model": this.model});
+      this.$side.html(side.render().$el);
     },
 
 
-    render_focus_box : function(){
-      console.log("box squats");
+    render_focus_box : function() {
       this.$el.append("");
     }
   });
