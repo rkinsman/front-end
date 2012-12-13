@@ -12,9 +12,11 @@ $(function($) {
       'click #user-submit': 'makeUser'
     },
 
-    initialize: function() {
-      app.currentUser ? this.userDash() : this.newUser();
-      //Lessons.fetch()
+    initialize : function() {
+      app.session = new app.Session();
+      app.session.authenticated() ? this.userDash : this.renderIndex() ;
+
+      app.Users.on('complete', this.userDash, this);
     },
 
     userDash: function() {
@@ -23,7 +25,13 @@ $(function($) {
       //this.$el.html(
     },
 
-    newUser: function() {
+    renderHeader : function() {
+      console.log('rendering header...');
+
+    },
+
+    renderIndex: function() {
+      //console.log(this.$el);
       this.$el.html(JST['backbone/templates/users/new']());
     },
 

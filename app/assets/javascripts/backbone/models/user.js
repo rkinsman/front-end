@@ -10,18 +10,7 @@ var app = app || {};
     },
 
     initialize: function() {
-      this.makeme();
-      app.currentUser = this;
-    },
-
-    makeme: function() {
-      console.log(this.toJSON());
-/*      $.ajax({
-        url: '/users.json',
-        type: 'post',
-        data: this.toJSON()
-      }).done(function(data) { console.log(data); });
-      */
+      console.log("I just got made and my name is: " + this.get('username'));
     },
 
     url: function() {

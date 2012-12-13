@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user 
       session[:user] = @user.id
+      cookies[:user_id] = @user.id
     else
       flash[:error] = "User does not exist"
     end
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
 
   def logout
     session.delete :user
+    cookies.delete :user_id
     redirect_to '/'
   end
 end
