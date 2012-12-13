@@ -1,3 +1,5 @@
+//Code adapted from:
+//http://whatcodecraves.com/articles/2012/01/11/backbonejs-sessions-and-authentication
 var app = app || {};
 
 (function() {
@@ -5,9 +7,8 @@ var app = app || {};
 
   app.Session = Backbone.Model.extend({
     defaults: {
-      sid: "",
-      user_id: ""
-      //lessons: []
+      user_id: false,
+      user: false
     },
 
     initialize : function() {
@@ -15,14 +16,26 @@ var app = app || {};
     },
 
     authenticated : function(){
-      return(this.get('sid'));
+      return(this.get('user_id'));
     },
 
     load : function() {
-      this.user_id = $.cookie('user_id');
-      this.sid = $.cookie('_front-end_session');
-    }
+      this.set('user_id', $.cookie('user_id'));
+      var id = this.get('user_id');
+      if(id) { app.Users.create({"username" : id}); }
+    },
 
+    signin: function(auth_hash) {
+      $.cookie('user_id', auth_hash['user_id']);
+      this.set('user_id', auth_hash['user_id']);
+      this.set('user', app.Users.get(auth_hash['user_id']));
+    },
+
+    signout : function() {
+      $.removeCookie('user_id');
+      this.set('user_id', false);
+      this.set('user', false);
+    }
 
   });
 }());

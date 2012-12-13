@@ -10,7 +10,8 @@ var app = app || {};
     },
 
     initialize: function() {
-      console.log("I just got made and my name is: " + this.get('username'));
+      //console.log("I just got made and my name is: " + this.get('username'));
+      if(app.session) { app.session.signin({'user_id': this.get('username')}); }
     },
 
     url: function() {

@@ -9,30 +9,27 @@ $(function($) {
     template: _.template(JST['backbone/templates/main/main']()),
 
     events: {
-      'click #user-submit': 'makeUser'
+      'click #user-submit': 'makeUser',
+      'click #sign-in': 'signin',
+      'click #sign-out': 'signout'
     },
 
     initialize : function() {
       app.session = new app.Session();
-      app.session.authenticated() ? this.userDash : this.renderIndex() ;
-
-      app.Users.on('complete', this.userDash, this);
+      this.$topbar = $('#topbar');
+      this.$container = $('#container');
+      this.render();
     },
 
     userDash: function() {
       console.log("user dash");
-      //var view = new app.UsersView({model: app.currentUser});
-      //this.$el.html(
-    },
-
-    renderHeader : function() {
-      console.log('rendering header...');
-
+      //var view = new app.UserDashboardView({ 'model' : app.session.get('user')});
+      //this.$container.html(view.render().el);
     },
 
     renderIndex: function() {
-      //console.log(this.$el);
-      this.$el.html(JST['backbone/templates/users/new']());
+      console.log("renderIndex");
+      this.$container.html(JST['backbone/templates/users/new']());
     },
 
     makeUser: function() {
@@ -40,8 +37,24 @@ $(function($) {
     },
 
     render: function() {
-      this.$el.html(this.template());
+      if(app.session.authenticated()) {
+        this.$topbar.html(JST['backbone/templates/main/logout']());
+        this.userDash() 
+      } else {
+        this.$topbar.html(JST['backbone/templates/main/login']());
+        this.renderIndex() ;
+      }
       return this;
+    },
+
+    signin: function() {
+      app.session.signin({'user_id': $('#user_id').val()});
+      this.render();
+    },
+
+    signout: function() {
+      app.session.signout();
+      this.render();
     }
 
   });
