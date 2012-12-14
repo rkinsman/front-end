@@ -13,13 +13,14 @@ $(function() {
 
 
     initialize : function() {
+      
     },
 
     render: function() {
+      console.log(this.el);
       console.log("sidebar render");
       var lessons = this.model.lessons;
-      this.$el.html(this.template(lessons));
-      console.log(this.el);
+   //   this.$(this.el.html(this.template(lessons)));
       return this;
     }
 

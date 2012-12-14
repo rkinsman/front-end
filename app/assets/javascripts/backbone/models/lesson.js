@@ -11,7 +11,7 @@ var app = app || {};
     },
 
     initialize: function() {
-      console.log("Im in Lesson!");
+      console.log("Initializing Lesson!");
     }
   });
-});
+}());

@@ -13,24 +13,19 @@ $(function() {
 
 
     initialize : function() {
-
       //console.log('call me maybe');
+    },
+
+
+
+    render : function(){
       this.$el.html(this.template(this.model.toJSON()));
-      this.$side = $('#sidebar');
-      console.log(this.$el);
-      this.render_sidebar();
-      this.render_focus_box();
+      this.side = new app.UserSidebarView({"model": this.model});
+
+      assign(this.side, '#sidebar');
+
+      return this;
     },
 
-
-    render_sidebar : function() {
-      var side = new app.UserSidebarView({"model": this.model});
-      this.$side.html(side.render().$el);
-    },
-
-
-    render_focus_box : function() {
-      this.$el.append("");
-    }
   });
 });

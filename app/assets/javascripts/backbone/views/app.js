@@ -40,10 +40,10 @@ $(function($) {
       this.$container = $('#container');
       if(app.session.authenticated()) {
         this.$topbar.html(JST['backbone/templates/main/logout']());
-        this.userDash() 
+        this.userDash();
       } else {
         this.$topbar.html(JST['backbone/templates/main/login']());
-        this.renderIndex() ;
+        this.renderIndex();
       }
       return this;
     },

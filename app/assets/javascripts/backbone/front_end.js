@@ -10,3 +10,8 @@ var ENTER_KEY = 13;
 $(function() {
   new app.AppView();
 });
+
+//      http://ianstormtaylor.com/rendering-views-in-backbonejs-isnt-always-simple/
+var assign = function (view, selector) {
+ view.setElement(this.$(selector)).render();
+};

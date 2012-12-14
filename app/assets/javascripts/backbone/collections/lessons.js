@@ -6,13 +6,13 @@ var app = app || {};
 
   var LessonList = Backbone.Collection.extend({
     url: function() {
-      return 'users/' + this.get('user_id') + '/lessons.json';
+      return 'users/' + this.user_id + '/lessons.json';
     },
 
     model: app.Lesson,
 
-    initialize: function() {
-      console.log(app.Lesson);
+    initialize: function(obj) {
+      this.user_id = obj.user_id;
       console.log("lessons!");
     }
   });
