@@ -18,11 +18,11 @@ $(function() {
 
 
 
-    render : function(){
+    render : function() {
       this.$el.html(this.template(this.model.toJSON()));
-      this.side = new app.UserSidebarView({"model": this.model});
 
-      assign(this.side, '#sidebar');
+      var side = new app.UserSidebarView({"model":this.model});
+      this.$el.find("#sidebar").html(side.render().el);
 
       return this;
     },

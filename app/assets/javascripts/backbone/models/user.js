@@ -12,6 +12,11 @@ var app = app || {};
 
     initialize: function() {
       this.set("lessons", new app.LessonList({"user_id": this.get("username")}));
+    },
+
+    go: function() {
+      this.save();
+      app.session.signin(this);
       this.get('lessons').fetch();
     },
 

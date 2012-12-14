@@ -3,8 +3,9 @@ require 'json'
 
 class Lesson 
   include Mongoid::Document
-  attr_accessible :title, :lesson_id
+  attr_accessible :title, :lesson_id, :default
   field :title,   type: String
+  field :default, type: String
   embeds_many :questions
   accepts_nested_attributes_for :questions
 #  embeds_many :questions, :class_name => "Question", :inverse_of => :lesson
